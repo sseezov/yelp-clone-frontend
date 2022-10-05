@@ -1,0 +1,19 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+}
+
+.formRow {
+  gap: 10px;
+}
+
+.formControl {
+  padding: 10px;
+}
+
+.formRow {
+  display: flex;
+}
