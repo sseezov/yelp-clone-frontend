@@ -1,3 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px;
+  background-color: rgb(147, 64, 214);
+  color: white;
+}
+
 .home {
   display: flex;
   flex-direction: column;
@@ -8,12 +20,27 @@
 
 .formRow {
   gap: 10px;
+  display: flex;
+  padding: 20px 0;
 }
 
 .formControl {
   padding: 10px;
 }
 
-.formRow {
-  display: flex;
+
+.restaurant-list {
+  font-size: 20px;
 }
+
+.restaurant-list table tr td {
+  border-bottom: 2px solid gray;
+  padding: 10px;
+  background-color: rgb(85, 244, 141);
+}
+
+.restaurant-list thead tr th {
+  background-color: rgb(80, 169, 248);
+  padding: 10px;
+}
+
