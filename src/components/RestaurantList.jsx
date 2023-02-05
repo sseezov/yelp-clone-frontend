@@ -1,6 +1,25 @@
 import React from 'react'
+import { useContext } from 'react'
+import { useEffect } from 'react'
+import RestaurantFinder from '../apis/RestaurantFinder'
+import { RestaurantsContext } from '../context/restaurantsContext'
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
+
+  const { restaurants, setRestaurants } = useContext(RestaurantsContext)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await RestaurantFinder.get("/")
+        setRestaurants(response.data.data.restaurants)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
+  }, [])
+
   return (
     <div className='restaurant-list'>
       <table>
@@ -15,79 +34,18 @@ const RestaurantList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>McDonalds</td>
-            <td>New York</td>
-            <td>$$</td>
-            <td>rating</td>
-            <td>
-              <button>update</button>
-            </td>
-            <td>
-              <button>delete</button>
-            </td>
-          </tr>
-          
+          {restaurants && restaurants.map((restaraunt) => {
+            return (
+            <tr key={restaraunt.id}>
+              <td>{restaraunt.name}</td>
+              <td>{restaraunt.location}</td>
+              <td>{"$".repeat(restaraunt.price_range)}</td>
+              <td>reviews</td>
+              <td><button>update</button></td>
+              <td><button>delete</button></td>
+            </tr>)
+          })}
+
         </tbody>
 
       </table>

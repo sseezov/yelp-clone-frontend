@@ -12,8 +12,8 @@ const AddRestaurant = () => {
             <input type="text" className='formControl' placeholder='location' />
           </div>
           <div className="column">
-            <select className='formControl' placeholder='price range'>
-              <option disabled selected>choose price</option>
+            <select className='formControl' placeholder='price range' defaultValue={'DEFAULT'}>
+              <option value={'DEFAULT'} disabled>choose price</option>
               <option value="1">$</option>
               <option value="2">$$</option>
               <option value="3">$$$</option>
